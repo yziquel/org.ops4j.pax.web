@@ -17,8 +17,8 @@
 package org.ops4j.pax.web.service.jetty.internal;
 
 import org.eclipse.jetty.server.Connector;
+import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.server.bio.SocketConnector;
-import org.eclipse.jetty.server.nio.SelectChannelConnector;
 import org.eclipse.jetty.server.ssl.SslSocketConnector;
 import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.ops4j.lang.NullArgumentException;
@@ -56,20 +56,11 @@ class JettyFactoryImpl implements JettyFactory {
 	@Override
 	public Connector createConnector(final String name, final int port,
 			final String host, final boolean useNIO) {
-		if (useNIO) {
-			final SelectChannelConnector nioConnector = new NIOSocketConnectorWrapper();
-			nioConnector.setName(name);
-			nioConnector.setHost(host);
-			nioConnector.setPort(port);
-			nioConnector.setUseDirectBuffers(true);
-			return nioConnector;
-		} else {
-			final SocketConnector connector = new SocketConnectorWrapper();
+			final SocketConnector connector = new ServerConnector();
 			connector.setName(name);
 			connector.setPort(port);
 			connector.setHost(host);
 			return connector;
-		}
 	}
 
 	/**

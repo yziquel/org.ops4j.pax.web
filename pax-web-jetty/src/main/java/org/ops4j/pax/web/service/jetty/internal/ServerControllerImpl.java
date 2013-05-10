@@ -25,7 +25,6 @@ import java.util.concurrent.CopyOnWriteArraySet;
 import javax.servlet.Servlet;
 
 import org.eclipse.jetty.server.Connector;
-import org.eclipse.jetty.server.ssl.SslConnector;
 import org.ops4j.pax.web.service.spi.Configuration;
 import org.ops4j.pax.web.service.spi.LifeCycle;
 import org.ops4j.pax.web.service.spi.ServerController;
