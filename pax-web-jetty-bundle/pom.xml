@@ -122,8 +122,7 @@
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty.aggregate</groupId>
-      <artifactId>jetty-all-server</artifactId>
-      <scope>compile</scope>
+      <artifactId>jetty-all</artifactId>
       <optional>true</optional>
     </dependency>
 

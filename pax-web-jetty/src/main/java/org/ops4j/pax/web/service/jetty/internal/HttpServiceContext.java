@@ -175,8 +175,10 @@ class HttpServiceContext extends ServletContextHandler {
 			}
 		}
 
-		this.setVirtualHosts(virtualHosts.toArray(EMPTY_STRING_ARRAY));
-		this.setConnectorNames(connectors.toArray(EMPTY_STRING_ARRAY));
+		if (virtualHosts != null) //TODO: PAXWEB-520 check if this is actually valid!
+			this.setVirtualHosts(virtualHosts.toArray(EMPTY_STRING_ARRAY));
+		//TODO: PAXWEB-520 check if Connectors are still needed!!!
+//		this.setConnectorNames(connectors.toArray(EMPTY_STRING_ARRAY));
 		if (jettyWebXmlURL != null) {
 			// //do parsing and altering of webApp here
 			DOMJettyWebXmlParser jettyWebXmlParser = new DOMJettyWebXmlParser();
