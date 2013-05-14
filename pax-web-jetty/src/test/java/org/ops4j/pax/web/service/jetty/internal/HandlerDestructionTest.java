@@ -41,7 +41,6 @@ import org.osgi.service.http.HttpContext;
 public class HandlerDestructionTest {
 
 	@Test
-	@Ignore
 	public void testHandler() throws Exception {
 		ServerModel serverModel = new ServerModel();
 		JettyServerImpl server = new JettyServerImpl(serverModel);
