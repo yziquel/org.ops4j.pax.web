@@ -62,7 +62,7 @@ class JettyFactoryImpl implements JettyFactory {
 
 		// HTTP Configuration
 		HttpConfiguration http_config = new HttpConfiguration();
-		http_config.setSecureScheme(name);
+		http_config.setSecureScheme("https");
 		http_config.setSecurePort(8443);
 		http_config.setOutputBufferSize(32768);
 
@@ -71,6 +71,7 @@ class JettyFactoryImpl implements JettyFactory {
 				new HttpConnectionFactory(http_config));
 		http.setPort(port);
 		http.setHost(host);
+		http.setName(name);
 		http.setIdleTimeout(30000);
 
 		return http;
@@ -118,8 +119,8 @@ class JettyFactoryImpl implements JettyFactory {
 
 		// HTTP Configuration
 		HttpConfiguration http_config = new HttpConfiguration();
-		http_config.setSecureScheme(name);
-		http_config.setSecurePort(8443);
+		http_config.setSecureScheme("https");
+		http_config.setSecurePort(port);
 		http_config.setOutputBufferSize(32768);
 
 		// HTTPS Configuration
@@ -128,9 +129,11 @@ class JettyFactoryImpl implements JettyFactory {
 
 		// HTTPS connector
 		ServerConnector https = new ServerConnector(server,
-				new SslConnectionFactory(sslContextFactory, name),
+				new SslConnectionFactory(sslContextFactory, "http/1.1"),
 				new HttpConnectionFactory(https_config));
 		https.setPort(port);
+		https.setName(name);
+		https.setHost(host);
 		https.setIdleTimeout(500000);
 		
 		return https;
