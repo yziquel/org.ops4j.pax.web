@@ -7,3 +7,6 @@ target
 *.iml
 bin
 .idea
+.checkstyle
+*.log
+
