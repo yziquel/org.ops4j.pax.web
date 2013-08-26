@@ -104,11 +104,13 @@ class HttpServiceStarted implements StoppableHttpService {
 		NullArgumentException.validateNotNull(serverModel, "Service model");
 
 		this.serviceBundle = bundle;
-		Set<Bundle> wiredBundles = ClassPathUtil.getBundlesInClassSpace(bundle, new LinkedHashSet<Bundle>());
+		Set<Bundle> wiredBundles = ClassPathUtil.getBundlesInClassSpace(bundle,
+				new LinkedHashSet<Bundle>());
 		ArrayList<Bundle> bundles = new ArrayList<Bundle>();
 		bundles.add(bundle);
 		bundles.addAll(wiredBundles);
-		this.bundleClassLoader = new ResourceDelegatingBundleClassLoader(bundles);
+		this.bundleClassLoader = new ResourceDelegatingBundleClassLoader(
+				bundles);
 		this.serverController = srvController;
 		this.serverModel = serverModel;
 		this.eventDispatcher = eventDispatcher;
@@ -871,7 +873,7 @@ class HttpServiceStarted implements StoppableHttpService {
 
 		Set<Class<?>> clazzes = new HashSet<Class<?>>();
 		if (classes != null) {
-            Collections.addAll(clazzes, classes);
+			Collections.addAll(clazzes, classes);
 		}
 		Map<ServletContainerInitializer, Set<Class<?>>> containerInitializers = contextModel
 				.getContainerInitializers();
@@ -919,8 +921,10 @@ class HttpServiceStarted implements StoppableHttpService {
 		if (contextModel == null) {
 			contextModel = new ContextModel(context, serviceBundle,
 					bundleClassLoader);
-			contextModel.setConnectors(serverController.getConfiguration().getConnectors());
-			contextModel.setVirtualHosts(serverController.getConfiguration().getVirtualHosts());
+			contextModel.setConnectors(serverController.getConfiguration()
+					.getConnectors());
+			contextModel.setVirtualHosts(serverController.getConfiguration()
+					.getVirtualHosts());
 		}
 		return contextModel;
 	}
@@ -943,7 +947,7 @@ class HttpServiceStarted implements StoppableHttpService {
 		try {
 			serverController.getContext(contextModel);
 			contextModel.setWebBundle(true);
-//			serverController.
+			// serverController.
 		} catch (Exception e) { // CHECKSTYLE:SKIP
 			if (e instanceof RuntimeException) {
 				throw (RuntimeException) e;

@@ -27,8 +27,8 @@ import org.ops4j.pax.swissbox.core.BundleClassLoader;
 import org.osgi.framework.Bundle;
 
 /**
- * A bundle class loader which delegates resource loading to a list
- * of delegate bundles.
+ * A bundle class loader which delegates resource loading to a list of delegate
+ * bundles.
  * 
  * @author Harald Wellmann
  */

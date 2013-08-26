@@ -104,11 +104,12 @@ class RegisterWebAppVisitorWC implements WebAppVisitor {
 	 */
 	public void visit(final WebApp webApp) {
 		if (LOG.isDebugEnabled()) {
-			LOG.debug("visiting webapp: {}",webApp);
+			LOG.debug("visiting webapp: {}", webApp);
 		}
 		NullArgumentException.validateNotNull(webApp, "Web app");
 		bundleClassLoader = new BundleClassLoader(webApp.getBundle());
-		Set<Bundle> wiredBundles = ClassPathUtil.getBundlesInClassSpace(webApp.getBundle(), new LinkedHashSet<Bundle>());
+		Set<Bundle> wiredBundles = ClassPathUtil.getBundlesInClassSpace(
+				webApp.getBundle(), new LinkedHashSet<Bundle>());
 		ArrayList<Bundle> bundles = new ArrayList<Bundle>();
 		bundles.add(webApp.getBundle());
 		bundles.addAll(wiredBundles);
