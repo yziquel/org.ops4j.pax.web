@@ -14,15 +14,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ops4j.pax.web.samples.helloworld.wc.internal;
+package org.ops4j.pax.web.samples.helloworld.wc.internal
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.IOException
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException
+import javax.servlet.http.HttpServlet
+import javax.servlet.http.HttpServletResponse
 
 /**
  * Hello World Servlet.
@@ -30,20 +28,21 @@ import javax.servlet.http.HttpServletResponse;
  * @author Guillaume Yziquel
  * @since 4.0.0, September 25, 2013
  */
-public class HelloWorldStartupTalkativeServlet extends HttpServlet {
+class HelloWorldStartupTalkativeServlet extends HttpServlet
+{
 
-	protected void doGet(final HttpServletRequest request,
-			final HttpServletResponse response) throws ServletException,
-			IOException {
-
+  @throws[ServletException]
+  @throws[IOException]
+  protected def doGet(request: HttpServlet, response: HttpServletResponse)
+  {
 		if (HelloWorldStartupSilentServlet.isActive)
 		{
-			final PrintWriter writer = response.getWriter();
-			writer.println("<body align='center'>");
-			writer.println("<h1>Silent Servlet activated</h1>");
-			writer.println("</body>");
+      List( "<body align='center'>",
+            "<h1>Silent Servlet activated</h1>",
+            "</body>"
+      ).foreach(response.getWriter.println(_))
 		} else
-			throw new ServletException ("Silent Servlet is not active.");
+			throw new ServletException("Silent Servlet is not active.")
 	}
 
 }

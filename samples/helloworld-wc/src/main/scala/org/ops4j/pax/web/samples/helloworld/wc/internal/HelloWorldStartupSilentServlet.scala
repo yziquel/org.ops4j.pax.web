@@ -14,10 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.ops4j.pax.web.samples.helloworld.wc.internal;
+package org.ops4j.pax.web.samples.helloworld.wc.internal
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
+import javax.servlet.ServletException
+import javax.servlet.http.HttpServlet
+
 
 /**
  * Hello World Servlet.
@@ -25,18 +26,22 @@ import javax.servlet.http.HttpServlet;
  * @author Guillaume Yziquel
  * @since 4.0.0, September 25, 2013
  */
-public class HelloWorldStartupSilentServlet extends HttpServlet {
+class HelloWorldStartupSilentServlet extends HttpServlet
+{
 
-	public static boolean isActive = false;
+  import HelloWorldStartupSilentServlet._
 
-	@Override
-	public void init() throws ServletException {
-		isActive = true;
-	}
+  @throws[ServletException]
+  override def init() { isActive = true }
 
-	@Override
-	public void destroy() {
-		isActive = false;
-		super.destroy();
-	}
+  override def destroy() {
+    isActive = false
+    super.destroy()
+  }
+
+}
+
+object HelloWorldStartupSilentServlet
+{
+  var isActive = false
 }

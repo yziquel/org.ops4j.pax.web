@@ -117,7 +117,11 @@ public class ITestBase {
 						VersionUtil.getProjectVersion()),
 
 				addCodeCoverageOption(),
-						
+
+				mavenBundle().groupId("org.apache.servicemix.bundles")
+						.artifactId("org.apache.servicemix.bundles.scala-library")
+						.versionAsInProject(),
+
 				mavenBundle().groupId("org.ops4j.pax.web.itest")
 						.artifactId("pax-web-itest-base").versionAsInProject(),
 
